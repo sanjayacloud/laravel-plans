@@ -1,0 +1,29 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        $usersTable = (new (config('plans.user_model')))->getTable();
+
+        Schema::create(config('plans.tables.admin_actions', 'plan_admin_actions'), function (Blueprint $table) use ($usersTable) {
+            $table->id();
+            $table->foreignId('admin_id')->nullable()->constrained($usersTable)->nullOnDelete();
+            $table->foreignId('target_user_id')->nullable()->constrained($usersTable)->nullOnDelete();
+            $table->string('action');
+            $table->json('details')->nullable();
+            $table->timestamps();
+
+            $table->index(['target_user_id', 'created_at']);
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists(config('plans.tables.admin_actions', 'plan_admin_actions'));
+    }
+};

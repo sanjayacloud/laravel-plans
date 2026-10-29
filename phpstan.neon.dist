@@ -1,0 +1,28 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 5
+    paths:
+        - src
+    tmpDir: .phpstan.cache
+    ignoreErrors:
+        # The user model is configurable (plans.user_model), so its plan columns, HasPlans methods
+        # and Cashier's Billable methods aren't visible on the Model / Authenticatable types.
+        -
+            identifier: property.notFound
+            message: '#Illuminate\\(Database\\Eloquent\\Model|Foundation\\Auth\\User|Contracts\\Auth\\Authenticatable)::#'
+        -
+            identifier: method.notFound
+            message: '#Illuminate\\(Database\\Eloquent\\Model|Foundation\\Auth\\User)::#'
+        # Cashier's Subscription model has no @property annotations for its columns.
+        -
+            identifier: property.notFound
+            message: '#Laravel\\Cashier\\Subscription::#'
+        # Package views are registered under the plans:: namespace at runtime.
+        -
+            identifier: argument.type
+            message: '#view-string#'
+        # HasPlans is used by the host app's user model.
+        -
+            identifier: trait.unused
