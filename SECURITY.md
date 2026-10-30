@@ -8,7 +8,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security issue, please email **sanjayacloudp@gmail.com** instead of opening a public GitHub issue.
+If you discover a security issue, please email **sd.packagehub@gmail.com** instead of opening a public GitHub issue.
 
 Include:
 
