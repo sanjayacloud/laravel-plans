@@ -2,6 +2,12 @@
 
 All notable changes to `sanjayacloud/laravel-plans` will be documented in this file.
 
+## 0.5.1 - 2026-10-30
+
+### Changed
+
+- Package author email to `sd.packagehub@gmail.com`
+
 ## 0.5.0 - 2026-10-30
 
 ### Added
