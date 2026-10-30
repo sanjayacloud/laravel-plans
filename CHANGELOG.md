@@ -2,7 +2,7 @@
 
 All notable changes to `sanjayacloud/laravel-plans` will be documented in this file.
 
-## 0.1.0 - 2026-10-29
+## 0.5.0 - 2026-10-30
 
 ### Added
 
